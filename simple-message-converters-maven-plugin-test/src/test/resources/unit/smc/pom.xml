@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.techflavors</groupId>
+	<artifactId>smc-maven-plugin-test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>smc-maven-plugin</artifactId>
+				<configuration>
+					<sourceDirectory>${basedir}/src/test/java</sourceDirectory>
+					<project implementation="techflavors.tools.smc.generators.stubs.SMCMavenProject" />
+					<converters>
+						<converter>
+							<name>TestConverter</name>
+							<packageName>techflavors.tools.smc.generators.converters</packageName>
+							<sourceType>techflavors.tools.smc.generators.source.data.Person</sourceType>
+							<targetType>techflavors.tools.smc.generators.target.data.Person</targetType>
+						</converter>
+					</converters>
+					<injectionType>SPRING</injectionType>
+					<outputDirectory>target/generated-test-sources/smc</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
