@@ -113,7 +113,7 @@ public class CodeGenerator {
 		// String className = (classToName.equals(classFromName) ? classToName :
 		// classToName + classFromName)
 		// + "Converter";
-		return classToName + "Convertor";
+		return classToName + "Converter";
 	}
 
 	private List<MethodParam> getSetterMethods(Log log, File pd, String packageName, String sourceType,
